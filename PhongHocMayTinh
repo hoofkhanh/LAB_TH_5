@@ -1,0 +1,51 @@
+package bai_1;
+
+import java.util.Scanner;
+
+public class PhongHocMayTinh extends PhongHoc {
+	private int soLuongMayTinh;
+
+	public PhongHocMayTinh() {
+	}
+
+	public PhongHocMayTinh(String maPhong, String dayNha, double dienTich, int soBongDen, int soLuongMayTinh) {
+		super(maPhong, dayNha, dienTich, soBongDen);
+		this.soLuongMayTinh = soLuongMayTinh;
+	}
+
+	public int getSoLuongMayTinh() {
+		return soLuongMayTinh;
+	}
+
+	public void setSoLuongMayTinh(int soLuongMayTinh) {
+		this.soLuongMayTinh = soLuongMayTinh;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "PhongHocMayTinh [soLuongMayTinh=" + soLuongMayTinh + ",  Đạt chuẩn : "
+				+ phongHocDatChuan() + "]";
+	}
+
+	@Override
+	public boolean phongHocDatChuan() {
+		if (super.tinhTrungBinhDatChuan() && (super.getDienTich() / this.soLuongMayTinh) >= 1.5) {
+			return true;
+		}
+		return false;
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		super.nhap();
+
+		System.out.print("số lượng máy tính : ");
+		this.setSoLuongMayTinh(sc.nextInt());
+	}
+
+	public void chinhSua() {
+		Scanner sc =new Scanner(System.in);
+		System.out.print("số máy tính muốn sửa : ");
+		this.setSoLuongMayTinh(sc.nextInt());
+	}
+}
