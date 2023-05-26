@@ -1,0 +1,91 @@
+package bai_1;
+
+import java.util.Scanner;
+
+public class PhongHocThiNghiem extends PhongHoc {
+	private String thongTinChuyenNganh;
+	private int sucChua;
+	private boolean bonRua;
+	
+	String tenBon;
+
+	public PhongHocThiNghiem(String maPhong, String dayNha, double dienTich, int soBongDen, String thongTinChuyenNganh,
+			int sucChua, boolean bonRua) {
+		super(maPhong, dayNha, dienTich, soBongDen);
+		this.thongTinChuyenNganh = thongTinChuyenNganh;
+		this.sucChua = sucChua;
+		this.bonRua = bonRua;
+	}
+
+	public PhongHocThiNghiem() {
+		super();
+	}
+
+	public String getThongTinChuyenNganh() {
+		return thongTinChuyenNganh;
+	}
+
+	public void setThongTinChuyenNganh(String thongTinChuyenNganh) {
+		this.thongTinChuyenNganh = thongTinChuyenNganh;
+	}
+
+	public int getSucChua() {
+		return sucChua;
+	}
+
+	public void setSucChua(int sucChua) {
+		this.sucChua = sucChua;
+	}
+
+	public boolean isBonRua() {
+		return bonRua;
+	}
+
+	public void setBonRua(boolean bonRua) {
+		this.bonRua = bonRua;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString()+"PhongHocThiNghiem [thongTinChuyenNganh=" + thongTinChuyenNganh + ", sucChua=" + sucChua + ", bonRua="
+				+ tenBon + ",  Đạt chuẩn : "+phongHocDatChuan()  +"]";
+	}
+
+	@Override
+	public boolean phongHocDatChuan() {
+		if(super.tinhTrungBinhDatChuan() && this.bonRua==true) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String nhapBonRua() {
+		if(this.bonRua == true) {
+			Scanner sc =new Scanner(System.in);
+			System.out.println("nhập bồn rửa");
+			return sc.nextLine();
+		}
+		
+		return null;
+	}
+	
+	public void nhap() {
+		Scanner sc =new Scanner(System.in);
+		super.nhap();
+		
+		System.out.print("thông tin chuyên ngành : ");
+		this.setThongTinChuyenNganh(sc.nextLine());
+		
+		System.out.print("sức chứa : ");
+		this.setSucChua(sc.nextInt());
+		sc.nextLine();
+		System.out.print("có bồn rửa : ");
+		this.setBonRua(sc.nextBoolean());
+		if(this.bonRua==true) {
+			System.out.println("nhap ten bon");
+			tenBon = sc.nextLine();
+		}else {
+			tenBon= "false";
+		}
+	}
+}
