@@ -1,0 +1,8 @@
+package bai_1;
+
+public class Test {
+	public static void main(String[] args) {
+		DanhSachPhongHoc list = new DanhSachPhongHoc();
+		list.menu();
+	}
+}
