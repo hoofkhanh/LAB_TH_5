@@ -1,0 +1,46 @@
+package bai_1;
+
+import java.util.Scanner;
+
+public class PhongHocLyThuyet extends PhongHoc {
+	private boolean mayChieu;
+
+	public PhongHocLyThuyet() {
+	}
+
+	public PhongHocLyThuyet(String maPhong, String dayNha, double dienTich, int soBongDen, boolean mayChieu) {
+		super(maPhong, dayNha, dienTich, soBongDen);
+		this.mayChieu = mayChieu;
+	}
+
+	public boolean isMayChieu() {
+		return mayChieu;
+	}
+
+	public void setMayChieu(boolean mayChieu) {
+		this.mayChieu = mayChieu;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "PhongHocLyThuyet [mayChieu=" + mayChieu +",  Đạt chuẩn : "+phongHocDatChuan()  +"]";
+	}
+
+	@Override
+	public boolean phongHocDatChuan() {
+		if(this.mayChieu==true && super.tinhTrungBinhDatChuan()) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		super.nhap();
+		
+		System.out.print("có máy chiếu không : ");
+		this.setMayChieu(sc.nextBoolean());
+	}
+	
+	
+}
